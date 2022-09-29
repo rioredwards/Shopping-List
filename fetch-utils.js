@@ -29,17 +29,23 @@ export async function signOutUser() {
 
 /* Data functions */
 export async function createItem(item) {
-    // Insert the todo in supabase, returns a single row
+    // Insert the item in supabase, returns a single row
     return await client.from('lists').insert(item).single();
 }
 
 export async function getItems() {
-    // > Part B: Get all todos for this user from supabase
+    // > Part B: Get all items for this user from supabase
     return await client.from('lists').select().order('created_at');
 }
 
-/* export async function completeItem(id) {
-    // > Part C: call update (set complete to true) for the todo that
+export async function buyItem(id) {
+    // > Part C: call update (set complete to true) for the item that
     // matches the correct id. Returns a single record:
-    return await client.from('todos').update({ complete: true }).eq('id', id).single();
+    return await client.from('lists').update({ bought: true }).eq('id', id).single();
+}
+
+/* export async function completeItem(id) {
+    // > Part C: call update (set complete to true) for the item that
+    // matches the correct id. Returns a single record:
+    return await client.from('items').update({ complete: true }).eq('id', id).single();
 } */
