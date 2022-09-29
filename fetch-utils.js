@@ -45,9 +45,17 @@ export async function buyItem(id) {
 }
 
 export async function deleteAllItems() {
+    // > Part D: delete all items for this user in supabase:
+    return await client.from('lists').delete().eq('item', true);
+}
+
+/* export async function deleteBoughtItems() {
     const user = getUser();
 
-    // > Part D: delete all items for this user in supabase:
+    // > Part D: delete bought items for this user in supabase:
+    return await client.from('lists').delete().eq('user_id', user.id).eq('bought', true);
+} */
 
-    return await client.from('lists').delete().eq('user_id', user.id);
+export async function deleteCompleted() {
+    return await client.from('lists').delete().match({ bought: true });
 }
