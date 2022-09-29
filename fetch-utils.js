@@ -33,6 +33,11 @@ export async function createItem(item) {
     return await client.from('lists').insert(item).single();
 }
 
+export async function getItems() {
+    // > Part B: Get all todos for this user from supabase
+    return await client.from('lists').select().order('created_at');
+}
+
 /* export async function completeItem(id) {
     // > Part C: call update (set complete to true) for the todo that
     // matches the correct id. Returns a single record:

@@ -1,12 +1,12 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { createItem } from './fetch-utils.js';
+import { createItem, getItems } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
-const deleteButton = document.getElementById('delete-button');
+// const deleteButton = document.getElementById('delete-button');
 const errorDisplay = document.getElementById('error-display');
 const itemList = document.getElementById('item-list');
 
@@ -15,6 +15,24 @@ let items = [];
 let error = null;
 
 /* Events */
+window.addEventListener('load', async () => {
+    // > Part B: Add a click event listener for the todoEl
+    //      - call the async supabase function to delete all items
+    //        and get the response
+    //      - set the items and error state from the response
+    //      - if there's an error call displayError
+    //      - otherwise, display the items
+    const response = await getItems();
+    error = response.error;
+    items = response.data;
+
+    if (error) {
+        displayError();
+    } else {
+        displayItems();
+    }
+});
+
 addItemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(addItemForm);
