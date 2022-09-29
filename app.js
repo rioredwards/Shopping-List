@@ -1,12 +1,12 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { buyItem, createItem, getItems } from './fetch-utils.js';
+import { buyItem, createItem, deleteAllItems, getItems } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
-// const deleteButton = document.getElementById('delete-button');
+const deleteButton = document.getElementById('delete-button');
 const errorDisplay = document.getElementById('error-display');
 const itemList = document.getElementById('item-list');
 
@@ -52,6 +52,20 @@ addItemForm.addEventListener('submit', async (e) => {
         items.push(item);
         displayItems();
         addItemForm.reset();
+    }
+});
+
+deleteButton.addEventListener('click', async () => {
+    // > Part D: Call the async supabase function to delete all items
+    const response = await deleteAllItems();
+    error = response.error;
+
+    if (error) {
+        displayError();
+    } else {
+        // > Part D: reset items state to an empty array:
+        items = [];
+        displayItems();
     }
 });
 

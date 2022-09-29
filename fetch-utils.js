@@ -44,8 +44,10 @@ export async function buyItem(id) {
     return await client.from('lists').update({ bought: true }).eq('id', id).single();
 }
 
-/* export async function completeItem(id) {
-    // > Part C: call update (set complete to true) for the item that
-    // matches the correct id. Returns a single record:
-    return await client.from('items').update({ complete: true }).eq('id', id).single();
-} */
+export async function deleteAllItems() {
+    const user = getUser();
+
+    // > Part D: delete all items for this user in supabase:
+
+    return await client.from('lists').delete().eq('user_id', user.id);
+}
