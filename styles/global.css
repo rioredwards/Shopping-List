@@ -1,5 +1,5 @@
 :root {
-    --background: rgb(224, 234, 247);
+    --background: rgba(224, 234, 247, 0.787);
     --header-background: white;
     --text-color: rgb(7, 5, 68);
     --label-color: rgb(75, 102, 98);
@@ -15,7 +15,7 @@ body {
     height: 100vh;
     font-family: var(--primary-font);
     color: var(--text-color);
-    background: var(--background);
+    /* background: var(--background); */
     display: grid;
     grid-template-rows: auto 1fr;
 }
@@ -25,7 +25,7 @@ body {
     top: 0;
     padding: 15px;
     height: 80px;
-
+    z-index: 1;
     display: flex;
     align-items: center;
     gap: 10px;

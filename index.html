@@ -25,10 +25,12 @@
         <!-- css -->
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="/styles/list.css" />
         <!-- add link for page specific css -->
     </head>
 
     <body>
+        <img src="./assets/grocery-store.jpg" alt="grocery store" class="bg-image" />
         <header class="page-header">
             <img class="logo" src="/assets/grocery.png" alt="logo" />
             <p class="title">Grocery List</p>
@@ -39,7 +41,7 @@
         </header>
 
         <main>
-            <section>
+            <section class="main-section">
                 <form class="add-item-form" id="add-item-form">
                     <label>
                         Quantity:
@@ -49,15 +51,16 @@
                         Item:
                         <input name="item" />
                     </label>
-                    <button>Add item</button>
+                    <button class="add-item-btn">Add item</button>
                 </form>
                 <p class="error" id="error-display"></p>
-                <ul class="item-list" id="item-list">
-                    <p class="list-item bought">2 kiwis</p>
-                    <p class="list-item not-bought">1 yogurt</p>
-                </ul>
-                <button class="delete-button" id="delete-button">Delete list</button>
-                <button class="delete-button" id="delete-bought-button">Delete bought items</button>
+                <ul class="item-list" id="item-list"></ul>
+                <section class="delete-section">
+                    <button class="delete-button" id="delete-button">Delete list</button>
+                    <button class="delete-button" id="delete-bought-button">
+                        Delete bought items
+                    </button>
+                </section>
             </section>
         </main>
         <footer></footer>

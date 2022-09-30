@@ -81,10 +81,8 @@ deleteBoughtButton.addEventListener('click', async () => {
         // > Part D: reset items state to an empty array:
         for (let item of items) {
             if (item.bought) {
-                console.log(items);
                 let index = items.indexOf(item);
                 items.splice(index, 1);
-                console.log(items);
             }
         }
         displayItems();
